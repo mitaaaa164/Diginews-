@@ -1,7 +1,11 @@
+import 'package:diginews/core/di/injection.dart';
 import 'package:flutter/material.dart';
 import 'core/theme/app_theme.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Wajib ditambahkan
+  await initDependencies();
+
   const appName = String.fromEnvironment(
     'APP_NAME',
     defaultValue: 'DEV - Mita',
@@ -23,7 +27,7 @@ class MyApp extends StatelessWidget {
       theme: isDev ? AppTheme.devTheme : AppTheme.prodTheme,
       home: Scaffold(
         appBar: AppBar(title: Text(appName)),
-        body: const Center(child: Text('Setup Flavor DEV Berhasil!')),
+        body: const Center(child: Text('GetIt & Cubit Berhasil Disetup!')),
       ),
     );
   }
